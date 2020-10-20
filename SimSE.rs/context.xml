@@ -1,0 +1,8 @@
+<context id="SimSE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="http://repast.org/scenario/context">
+	<projection type="network" id="Change Coupling"></projection>
+	<projection type="network" id="Developer connected to file"></projection>
+	<projection type="network" id="Bugs assigned to file"></projection>
+  	<projection type="network" id="membership_method"/>
+  	<projection type="network" id="method_call"/>	  	
+</context>

@@ -1,0 +1,6 @@
+#
+#Thu Oct 15 12:43:03 CEST 2020
+incoming=tcp\://127.0.0.1\:5555
+outgoing=tcp\://127.0.0.1\:5556
+scenario=..\\SimSE.rs
+working.directory=../

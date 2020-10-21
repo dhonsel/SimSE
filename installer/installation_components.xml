@@ -2,7 +2,7 @@
 
 <!-- IzPack configuration file for building the user model installer. -->
 
-<installation version="0.7-alpha">
+<installation version="1.0">
     <info>
       <appname>SimSE</appname>
 			<appversion>0.7-alpha</appversion>

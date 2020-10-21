@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+					<parameter name="randomSeed" displayName="Default Random Seed" type="int" 
+						defaultValue="__NULL__"
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="initRounds" displayName="Number of Init Rounds" type="int" 
+						defaultValue="50" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="boostFactor" displayName="Boost Factor" type="double" 
+						defaultValue="2.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="deleteBonus" displayName="Delete bonus" type="double" 
+						defaultValue="1.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="refactoring" displayName="Simulate Refactorings" type="boolean" 
+						defaultValue="false" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
+									
+		/>		
+				<parameter name="initBoostFactor" displayName="Init Boost Factor" type="double" 
+						defaultValue="15.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="fixRuns" displayName="Fix runs" type="int" 
+						defaultValue="2" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="startYear" displayName="Start year" type="int" 
+						defaultValue="0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
+				<parameter name="developer" displayName="Developer" type="java.lang.String" 
+						defaultValue="type" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+									
+		/>
+				<parameter name="projectName" displayName="Project name" type="java.lang.String" 
+						defaultValue="commons-io" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+									
+		/>
+				<parameter name="averageChange" displayName="Use average change probabilities" type="boolean" 
+						defaultValue="false" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
+									
+		/>			
+		</parameters>
+
+

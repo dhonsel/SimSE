@@ -2,10 +2,10 @@
 
 <!-- IzPack configuration file for building the user model installer. -->
 
-<installation version="1.0">
+<installation version="0.7-alpha">
     <info>
       <appname>SimSE</appname>
-			<appversion>1.0</appversion>
+			<appversion>0.7-alpha</appversion>
       <summarylogfilepath>$INSTALL_PATH/installinfo/Summary.htm</summarylogfilepath>
     </info>
     <guiprefs height="600" resizable="yes" width="800">

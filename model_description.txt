@@ -1,4 +1,6 @@
-This is the SimSE model. It is an agent-based simulation model to simulate software evolution.
+This is the SimSE model. It is an agent-based simulation
+model to simulate software evolution. Simulation and runtime
+parameters for several open source projects are included.
 
 More information can be found on the project page at GitHub.
 

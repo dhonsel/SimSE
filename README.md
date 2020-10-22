@@ -1,5 +1,5 @@
 # SimSE - Simulation of Software Evolution
-Agent-based simulation model to simulate software evolution. Repast Simphony is used for the implementation. A detailed description of the model, the parameters and their extraction can be found in \[1\].
+Agent-based simulation model to simulate software evolution. Repast Simphony is used for the implementation. A detailed description of the model, the parameters and their extraction can be found in \[1\]. A general workflow how all tools work together can be found [here](https://github.com/dhonsel/SimSE/blob/main/docs/workflow.md#workflow).
 
 ## Requirements
 To build the model or to develop it further [Repast Simphony](https://repast.github.io/) (version 2.7) is required. For the development and execution of the simulation model Java 11 or newer is also required. 

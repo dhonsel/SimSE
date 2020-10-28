@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import org.apache.commons.lang3.StringUtils;
 
 import de.ugoe.cs.tcs.se.SEContext;
+import de.ugoe.cs.tcs.se.graph.SECategory;
 import de.ugoe.cs.tcs.se.graph.SEFile;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.space.graph.RepastEdge;
@@ -153,6 +154,43 @@ public class GraphExportGephi {
 			String target = ((SEFile) edge.getTarget()).toString();
 			writer.println("  " + source + " -- " + target + " [ weight=\"" + edge.getWeight() + "\" ];");
 			writer.println("}");
+			writer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void writeChangeCouplingGraphOneFile() {
+		String year = String.valueOf(((int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount()) / 365);
+		try {
+			File f = new File("output/change_coupling");
+			if (!f.exists()) {
+				f.mkdirs();
+			}
+			PrintWriter writer = new PrintWriter(
+					"output/change_coupling/ChangeCoupling" + StringUtils.leftPad(year, 2, '0') + ".cgr", "UTF-8");
+			writer.println("#graph#");
+			writer.println("Name=Simulated year: " + StringUtils.leftPad(year, 2, '0'));
+			writer.println('\n' + "#nodes#");
+			writer.println("Id,Category,Value");
+			for (Object artifact : SEContext.baseContext().getObjects(SEFile.class)) {
+				writer.println(artifact.toString() + "," + ((SEFile) artifact).getCategory().getName() + ","
+						+ ((SEFile) artifact).getLabelValue());
+			}
+			writer.println('\n' + "#edges#");
+			writer.println("Source,Target,Weight,Type");
+			for (RepastEdge<Object> edge : SEContext.changeCoupling.getEdges()) {
+				String source = ((SEFile) edge.getSource()).toString();
+				String target = ((SEFile) edge.getTarget()).toString();
+				writer.println(source + "," + target + "," + edge.getWeight() + ",Undirected");
+			}
+			writer.println('\n' + "#statistics#");
+			writer.println("Average Label Value: " + Util.computeAverageLabelValue());
+			for (SECategory c : SEContext.CATEGORIES) {
+				writer.println("Average Label Value of Category: " + c.getName() + " Value: " + c.averageLabelValue());
+			}
 			writer.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

@@ -187,7 +187,7 @@ public class Util {
 	 * The method calculates the average label value over all instantiated files.
 	 * @return The average label value.
 	 */
-	public double computeAverageLabelValue() {
+	public static double computeAverageLabelValue() {
 		double value = 0;
 		IndexedIterable<Object> artifatcs = SEContext.baseContext().getObjects(SEFile.class);
 		for (Object a : artifatcs) {

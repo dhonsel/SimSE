@@ -163,7 +163,8 @@ public class GraphExportGephi {
 	}
 
 	public void writeChangeCouplingGraphOneFile() {
-		String year = String.valueOf(((int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount()) / 365);
+		String year = String.valueOf((((int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount()) / 365)
+				+ 1 + RunEnvironment.getInstance().getParameters().getInteger("startYear"));
 		try {
 			File f = new File("output/change_coupling");
 			if (!f.exists()) {

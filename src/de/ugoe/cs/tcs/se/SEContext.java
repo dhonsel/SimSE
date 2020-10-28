@@ -185,6 +185,7 @@ public class SEContext implements ContextBuilder<Object> {
 		ScheduleParameters sRepeat = ScheduleParameters.createRepeating(computeFirtYearTicks(), 365);		
 		RunEnvironment.getInstance().getCurrentSchedule().schedule(sRepeat, export, "writeChangeCouplingGraph");
 		RunEnvironment.getInstance().getCurrentSchedule().schedule(sRepeat, export, "writeChangeCouplingGraphDOT");
+		RunEnvironment.getInstance().getCurrentSchedule().schedule(sRepeat, export, "writeChangeCouplingGraphOneFile");
 		RunEnvironment.getInstance().getCurrentSchedule().schedule(sRepeat, this, "writeNoCEntry");
 		
 		ScheduleParameters  sLastRound = ScheduleParameters.createOneTime(simRounds);

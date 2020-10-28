@@ -279,11 +279,17 @@ public class SEContext implements ContextBuilder<Object> {
 		return bugsFixed;
 	}
 	
+	/**
+	 * If the simulation starts at a given time, standard graphs with only one node
+	 * are generated here for the non-simulated years. They are used by the tools
+	 * for further evaluation 
+	 */
 	public void writeDefaultCCFiles() {
 		CCGraphExport export = new CCGraphExport();
 		for (int i = 0; i < RunEnvironment.getInstance().getParameters().getInteger("startYear"); i++) {
 			export.writeChangeCouplingGraph(i+1);
 			export.writeChangeCouplingGraphDOT(i+1);
+			export.writeChangeCouplingGraphCGR(i+1);
 		}
 	}
 	

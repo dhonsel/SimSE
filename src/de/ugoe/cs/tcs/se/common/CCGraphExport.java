@@ -63,6 +63,12 @@ public class CCGraphExport {
 		}
 	}
 
+	/**
+	 * If the simulation starts at a given time, default graphs with only one node
+	 * are generated here for the non-simulated years. They are used by the tools
+	 * for further evaluation 
+	 * @param y The year for which the default graph should be generated.
+	 */
 	public void writeChangeCouplingGraph(int y) {
 		String year = String.valueOf(y);
 
@@ -137,6 +143,12 @@ public class CCGraphExport {
 		}
 	}
 
+	/**
+	 * If the simulation starts at a given time, default graphs with only one node
+	 * are generated here for the non-simulated years. They are used by the tools
+	 * for further evaluation 
+	 * @param y The year for which the default graph should be generated.
+	 */
 	public void writeChangeCouplingGraphDOT(int y) {
 		String year = String.valueOf(y);
 		try {
@@ -200,4 +212,38 @@ public class CCGraphExport {
 		}
 	}
 
+	
+	public void writeChangeCouplingGraphCGR(int y) {
+		String year = String.valueOf(y);
+		try {
+			File f = new File("output/change_coupling");
+			if (!f.exists()) {
+				f.mkdirs();
+			}
+			RepastEdge<Object> edge = SEContext.changeCoupling.getEdges().iterator().next();
+			SEFile source = (SEFile) edge.getSource();
+			SEFile target = (SEFile) edge.getTarget();
+
+			PrintWriter writer = new PrintWriter(
+					"output/change_coupling/ChangeCoupling" + StringUtils.leftPad(year, 2, '0') + ".cgr", "UTF-8");
+			writer.println("#graph#");
+			writer.println("Name=Simulated year: " + StringUtils.leftPad(year, 2, '0'));
+			writer.println('\n' + "#nodes#");
+			writer.println("Id,Category,Value");
+			writer.println(source.toString() + "," + source.getCategory().getName() + "," + source.getLabelValue());
+			writer.println(target.toString() + "," + target.getCategory().getName() + "," + target.getLabelValue());
+			writer.println('\n' + "#edges#");
+			writer.println("Source,Target,Weight,Type");
+			writer.println(source.toString() + "," + target.toString() + "," + edge.getWeight() + ",Undirected");
+			writer.println('\n' + "#statistics#");
+			writer.println("Average Label Value: " + Util.computeAverageLabelValue());
+			SECategory c = source.getCategory();
+			writer.println("Average Label Value of Category: " + c.getName() + " Value: " + c.averageLabelValue());
+			writer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}	
 }

@@ -13,7 +13,7 @@ import de.ugoe.cs.tcs.se.graph.SEFile;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.space.graph.RepastEdge;
 
-public class GraphExportGephi {
+public class CCGraphExport {
 
 	public void writeChangeCouplingGraph() {
 		String year = String.valueOf((((int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount()) / 365)
@@ -162,7 +162,7 @@ public class GraphExportGephi {
 		}
 	}
 
-	public void writeChangeCouplingGraphOneFile() {
+	public void writeChangeCouplingGraphCGR() {
 		String year = String.valueOf((((int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount()) / 365)
 				+ 1 + RunEnvironment.getInstance().getParameters().getInteger("startYear"));
 		try {

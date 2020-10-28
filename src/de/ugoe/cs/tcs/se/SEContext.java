@@ -18,7 +18,7 @@ import de.ugoe.cs.tcs.se.bugs.MajorBug;
 import de.ugoe.cs.tcs.se.bugs.MinorBug;
 import de.ugoe.cs.tcs.se.bugs.NormalBug;
 import de.ugoe.cs.tcs.se.common.DebugAgent;
-import de.ugoe.cs.tcs.se.common.GraphExportGephi;
+import de.ugoe.cs.tcs.se.common.CCGraphExport;
 import de.ugoe.cs.tcs.se.common.Util;
 import de.ugoe.cs.tcs.se.developer.CommitProbabilities;
 import de.ugoe.cs.tcs.se.developer.CoreDeveloper;
@@ -181,11 +181,11 @@ public class SEContext implements ContextBuilder<Object> {
 		BugCreator bugCreator = new BugCreator(context, cd);
 		RunEnvironment.getInstance().getCurrentSchedule().schedule(bugCreator);
 		
-		GraphExportGephi export = new GraphExportGephi();
+		CCGraphExport export = new CCGraphExport();
 		ScheduleParameters sRepeat = ScheduleParameters.createRepeating(computeFirtYearTicks(), 365);		
 		RunEnvironment.getInstance().getCurrentSchedule().schedule(sRepeat, export, "writeChangeCouplingGraph");
 		RunEnvironment.getInstance().getCurrentSchedule().schedule(sRepeat, export, "writeChangeCouplingGraphDOT");
-		RunEnvironment.getInstance().getCurrentSchedule().schedule(sRepeat, export, "writeChangeCouplingGraphOneFile");
+		RunEnvironment.getInstance().getCurrentSchedule().schedule(sRepeat, export, "writeChangeCouplingGraphCGR");
 		RunEnvironment.getInstance().getCurrentSchedule().schedule(sRepeat, this, "writeNoCEntry");
 		
 		ScheduleParameters  sLastRound = ScheduleParameters.createOneTime(simRounds);
@@ -280,7 +280,7 @@ public class SEContext implements ContextBuilder<Object> {
 	}
 	
 	public void writeDefaultCCFiles() {
-		GraphExportGephi export = new GraphExportGephi();
+		CCGraphExport export = new CCGraphExport();
 		for (int i = 0; i < RunEnvironment.getInstance().getParameters().getInteger("startYear"); i++) {
 			export.writeChangeCouplingGraph(i+1);
 			export.writeChangeCouplingGraphDOT(i+1);

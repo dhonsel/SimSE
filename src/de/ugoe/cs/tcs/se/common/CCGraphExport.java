@@ -24,16 +24,16 @@ public class CCGraphExport {
 			if (!f.exists()) {
 				f.mkdirs();
 			}
-			PrintWriter writerEdge = new PrintWriter("output/change_coupling/ChangeCoupling_Nodes_"
+			PrintWriter writerNode = new PrintWriter("output/change_coupling/ChangeCoupling_Nodes_"
 					+ RunEnvironment.getInstance().getParameters().getString("projectName")
 					+ (RunEnvironment.getInstance().getParameters().getBoolean("refactoring") ? "_ref" : "") + "_"
 					+ StringUtils.leftPad(year, 2, '0') + ".csv", "UTF-8");
-			writerEdge.println("Id,Category,Value");
+			writerNode.println("Id,Category,Value");
 			for (Object file : SEContext.baseContext().getObjects(SEFile.class)) {
-				writerEdge.println(file.toString() + "," + ((SEFile) file).getCategory().getName() + ","
+				writerNode.println(file.toString() + "," + ((SEFile) file).getCategory().getName() + ","
 						+ ((SEFile) file).getLabelValue());
 			}
-			writerEdge.close();
+			writerNode.close();
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (UnsupportedEncodingException e1) {
@@ -45,17 +45,17 @@ public class CCGraphExport {
 			if (!f.exists()) {
 				f.mkdirs();
 			}
-			PrintWriter writer = new PrintWriter("output/change_coupling/ChangeCoupling_Edges_"
+			PrintWriter writerNode = new PrintWriter("output/change_coupling/ChangeCoupling_Edges_"
 					+ RunEnvironment.getInstance().getParameters().getString("projectName")
 					+ (RunEnvironment.getInstance().getParameters().getBoolean("refactoring") ? "_ref" : "") + "_"
 					+ StringUtils.leftPad(year, 2, '0') + ".csv", "UTF-8");
-			writer.println("Source,Target,Weight,Type");
+			writerNode.println("Source,Target,Weight,Type");
 			for (RepastEdge<Object> edge : SEContext.changeCoupling.getEdges()) {
 				String source = ((SEFile) edge.getSource()).toString();
 				String target = ((SEFile) edge.getTarget()).toString();
-				writer.println(source + "," + target + "," + edge.getWeight() + ",Undirected");
+				writerNode.println(source + "," + target + "," + edge.getWeight() + ",Undirected");
 			}
-			writer.close();
+			writerNode.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
@@ -71,17 +71,17 @@ public class CCGraphExport {
 			if (!f.exists()) {
 				f.mkdirs();
 			}
-			PrintWriter writerEdge = new PrintWriter("output/change_coupling/ChangeCoupling_Nodes_"
+			PrintWriter writerNode = new PrintWriter("output/change_coupling/ChangeCoupling_Nodes_"
 					+ RunEnvironment.getInstance().getParameters().getString("projectName")
 					+ (RunEnvironment.getInstance().getParameters().getBoolean("refactoring") ? "_ref" : "") + "_"
 					+ StringUtils.leftPad(year, 2, '0') + ".csv", "UTF-8");
-			writerEdge.println("Id,Category,Value");
+			writerNode.println("Id,Category,Value");
 			RepastEdge<Object> edge = SEContext.changeCoupling.getEdges().iterator().next();
-			writerEdge.println(edge.getSource().toString() + "," + ((SEFile) edge.getSource()).getCategory().getName()
+			writerNode.println(edge.getSource().toString() + "," + ((SEFile) edge.getSource()).getCategory().getName()
 					+ "," + ((SEFile) edge.getSource()).getLabelValue());
-			writerEdge.println(edge.getTarget().toString() + "," + ((SEFile) edge.getTarget()).getCategory().getName()
+			writerNode.println(edge.getTarget().toString() + "," + ((SEFile) edge.getTarget()).getCategory().getName()
 					+ "," + ((SEFile) edge.getTarget()).getLabelValue());
-			writerEdge.close();
+			writerNode.close();
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (UnsupportedEncodingException e1) {
@@ -93,16 +93,16 @@ public class CCGraphExport {
 			if (!f.exists()) {
 				f.mkdirs();
 			}
-			PrintWriter writer = new PrintWriter("output/change_coupling/ChangeCoupling_Edges_"
+			PrintWriter writerNode = new PrintWriter("output/change_coupling/ChangeCoupling_Edges_"
 					+ RunEnvironment.getInstance().getParameters().getString("projectName")
 					+ (RunEnvironment.getInstance().getParameters().getBoolean("refactoring") ? "_ref" : "") + "_"
 					+ StringUtils.leftPad(year, 2, '0') + ".csv", "UTF-8");
-			writer.println("Source,Target,Weight,Type");
+			writerNode.println("Source,Target,Weight,Type");
 			RepastEdge<Object> edge = SEContext.changeCoupling.getEdges().iterator().next();
 			String source = ((SEFile) edge.getSource()).toString();
 			String target = ((SEFile) edge.getTarget()).toString();
-			writer.println(source + "," + target + "," + edge.getWeight() + ",Undirected");
-			writer.close();
+			writerNode.println(source + "," + target + "," + edge.getWeight() + ",Undirected");
+			writerNode.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {

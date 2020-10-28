@@ -25,6 +25,7 @@ import de.ugoe.cs.tcs.se.refactorings.Misc;
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.util.ContextUtils;
+import repast.simphony.util.collections.IndexedIterable;
 
 public class Util {
 	public static SECategory getRandomCategorie() {
@@ -179,7 +180,19 @@ public class Util {
 			file = (SEFile) allFiles.get(idx);
 		}
 		
-		return file;
-		
+		return file;	
+	}
+	
+	/**
+	 * The method calculates the average label value over all instantiated files.
+	 * @return The average label value.
+	 */
+	public static double computeAverageLabelValue() {
+		double value = 0;
+		IndexedIterable<Object> artifatcs = SEContext.baseContext().getObjects(SEFile.class);
+		for (Object a : artifatcs) {
+			value += ((SEFile) a).getLabelValue();
+		}
+		return value / artifatcs.size();		
 	}	
 }

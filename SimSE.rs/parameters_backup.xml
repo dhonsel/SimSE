@@ -49,7 +49,7 @@
 									
 		/>
 				<parameter name="startYear" displayName="Start year" type="int" 
-						defaultValue="0" 
+						defaultValue="4" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									

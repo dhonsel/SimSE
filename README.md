@@ -8,7 +8,164 @@ To build the model or to develop it further [Repast Simphony](https://repast.git
 We have different parameter types. On the one hand, we have project parameters originating from mining that cannot be changed at runtime. On the other hand, we have parameters that can be changed at runtime to compare different simulation runs.
 
 ### Core parameters
-The core parameters to initialize the simulation model are generated for each project by our automated [parameter estimation tool](https://github.com/dhonsel/SimParameter). The basic data for each project are the maximum size of the project, the number and change probabilities of commits, the number of rounds to simulate, and the developers (identities) to instantiate with their role specific data. Furthermore, information about bugs, their fixes, and the categories of a project are available. The code data for each project is contained in a JSON file.
+The core parameters to initialize the simulation model are generated for each project by our automated [parameter estimation tool](https://github.com/dhonsel/SimParameter). The basic data for each project are the maximum size of the project, the number and change probabilities of commits, the number of rounds to simulate, and the developers (identities) to instantiate with their role specific data. Furthermore, information about bugs, their fixes, and the categories of a project are available. The code data for each project is contained in a JSON file. As an example, a part of the parameters for the open source project [Directory Fortress Core](https://github.com/apache/directory-fortress-core) is shown below.
+
+    {
+      "maxFiles": 828,
+      "numberOfAverageCommits": 1609,
+      "pAverageCommitUpdate": 0.1893163901635486,
+      "pAverageCommitDelete": 0.9716183574879227,
+      "pAverageCommitAdd": 0.7844953681131155,
+      "numberOfInitialCommits": 542,
+      "pInitialCommitUpdate": 0.13415841584158417,
+      "pInitialCommitDelete": 0.9409722222222222,
+      "pInitialCommitAdd": 0.6062639821029085,
+      "numberOfDevelopmentCommits": 1067,
+      "pDevelopmentCommitUpdate": 0.23929132092397395,
+      "pDevelopmentCommitDelete": 0.987962962962963,
+      "pDevelopmentCommitAdd": 0.9222126188418324,
+      "firstCommitDate": 1315765690000,
+      "lastCommitDate": 1552862012000,
+      "monthToSimulate": 91,
+      "roundsToSimulate": 2745,
+      "initialCommits": 550,
+      "keyDeveloper": 1,
+      "keyDeveloperCommits": 1238,
+      "keyDeveloperFixes": 200,
+      "keyDeveloperMaintainer": 1,
+      "majorDeveloper": 2,
+      "majorDeveloperCommits": 352,
+      "majorDeveloperFixes": 6,
+      "majorDeveloperMaintainer": 0,
+      "minorDeveloper": 7,
+      "minorDeveloperCommits": 27,
+      "minorDeveloperFixes": 1,
+      "minorDeveloperMaintainer": 0,
+      "peripheralDeveloper": 8,
+      "peripheralDeveloperCommits": 135,
+      "peripheralDeveloperFixes": 5,
+      "peripheralDeveloperMaintainer": 0,
+      "coreDeveloper": 2,
+      "coreDeveloperCommits": 1482,
+      "coreDeveloperFixes": 202,
+      "coreDeveloperMaintainer": 1,
+      "issueInformationComplete": {
+        "NONE": 0,
+        "MAJOR": 230,
+        "CRITICAL": 9,
+        "MINOR": 26
+      },
+      "issueInformationCompleteFixed": {
+        "NONE": 0,
+        "MAJOR": 181,
+        "CRITICAL": 9,
+        "MINOR": 22
+      },
+      "issueInformationYearly": {
+        "2017": {
+          "NONE": 0,
+          "MAJOR": 23,
+          "CRITICAL": 0,
+          "MINOR": 6
+        },
+        "2018": {
+          "NONE": 0,
+          "MAJOR": 26,
+          "CRITICAL": 0,
+          "MINOR": 2
+        },
+        "2019": {
+          "NONE": 0,
+          "MAJOR": 7,
+          "CRITICAL": 0,
+          "MINOR": 1
+        }
+      },
+      "exportPackages": [
+        {
+          "name": "org.apache.directory.fortress",
+          "files": 324,
+          "percent": 52.42718446601942
+        },
+        {
+          "name": "us.jts.fortress.rbac",
+          "files": 98,
+          "percent": 15.857605177993527
+        },
+        {
+          "name": "com.jts.fortress.rbac",
+          "files": 82,
+          "percent": 13.268608414239482
+        },
+        {
+          "name": "com.jts.fortress",
+          "files": 49,
+          "percent": 7.9288025889967635
+        }
+      ],
+      "identities": [
+        {
+          "objectID": "9c9675b1-900a-40df-86d3-7d02497f7817",
+          "name": "Developer 01",
+          "numberOfCommits": 1238,
+          "percent": 76.56153370439083,
+          "type": "key",
+          "role": "core",
+          "maintainer": true,
+          "numberOfFixes": 200,
+          "numberOfTests": 0,
+          "numberOfFeatures": 0,
+          "numberOfMaintenance": 0,
+          "numberOfRefactorings": 0,
+          "numberOfDocumentation": 0
+        },
+        {
+          "objectID": "a6bf25c1-b70c-475b-a041-92c9f1131f7c",
+          "name": "Developer 02",
+          "numberOfCommits": 244,
+          "percent": 15.089672232529376,
+          "type": "major",
+          "role": "core",
+          "maintainer": false,
+          "numberOfFixes": 2,
+          "numberOfTests": 0,
+          "numberOfFeatures": 0,
+          "numberOfMaintenance": 0,
+          "numberOfRefactorings": 0,
+          "numberOfDocumentation": 0
+        },
+        {
+          "objectID": "919d2532-2ff7-4487-9cdc-76535b9225b7",
+          "name": "Developer 03",
+          "numberOfCommits": 108,
+          "percent": 6.679035250463822,
+          "type": "major",
+          "role": "peripheral",
+          "maintainer": false,
+          "numberOfFixes": 4,
+          "numberOfTests": 0,
+          "numberOfFeatures": 0,
+          "numberOfMaintenance": 0,
+          "numberOfRefactorings": 0,
+          "numberOfDocumentation": 0
+        },
+        {
+          "objectID": "702f71e3-620d-44f0-815e-6d941405b685",
+          "name": "Developer 04",
+          "numberOfCommits": 16,
+          "percent": 0.989486703772418,
+          "type": "minor",
+          "role": "peripheral",
+          "maintainer": false,
+          "numberOfFixes": 1,
+          "numberOfTests": 0,
+          "numberOfFeatures": 0,
+          "numberOfMaintenance": 0,
+          "numberOfRefactorings": 0,
+          "numberOfDocumentation": 0
+        }
+      ]
+    }
 
 ### Change Coupling Graph
 The change coupling graph is also generated by our automated parameter estimation tool and is stored using the dot format. The nodes represent the files of the software and the edges with their weights represent how often files are changed together in one commit. To initialize the simulation, the nodes contain additional information like the owner, the creator, all developers who touched the file and how often they touched it, and the package the file belongs to. By default, it is generated for each year. This information is used to start the simulation at a given point in time.

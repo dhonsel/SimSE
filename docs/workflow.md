@@ -24,3 +24,4 @@ Here the individual steps necessary to simulate a desired open source project ar
 4. Copy the mined change coupling graph files `cc_projectname_XX.dot` to the `input` folder.
 5. Start the application and execute the simulation model.
 6. After a simulation run all generated date is stored in the folder `output`.
+7. To evaluate the simulation results you can use the collection of R scripts published [here](https://github.com/vhonsel/sim_data_ASEJ_2020).
